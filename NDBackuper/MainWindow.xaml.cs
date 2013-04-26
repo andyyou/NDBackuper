@@ -336,9 +336,10 @@ namespace NDBackuper
                 }
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.CommandText = "sp_databases";
-                cmd.CommandText = "SELECT name FROM sys.databases WHERE database_id > 4";
+                // TODO: sql2k modify here.
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_databases";
+                // cmd.CommandText = "SELECT name FROM sys.databases WHERE database_id > 4";
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -362,7 +363,8 @@ namespace NDBackuper
                 }
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "SELECT name FROM sys.tables WHERE is_ms_shipped = 0";
+                // TODO: sql2k modify here.
+                cmd.CommandText = "SELECT name FROM sysobjects WHERE xtype = 'U'";
                 SqlDataReader dr = cmd.ExecuteReader();
                 ObservTables.Clear();
 
